@@ -23,7 +23,7 @@ document.onkeydown = function (key) {
             changeDirection('right');
             break;
         case ' ':
-            console.log(player.x, player.y);
+            drawDots();
             break;
     }
 }

@@ -219,122 +219,63 @@ export function rand(start, end) {
 
 export function drawDots() {
 
-    for (let i=0;i<6;i++) {
-        let dotBoard = document.createElement('div');
+    let badPoints = [
+        {x: 2, y: 2},
+        {x: 19, y: 2},
+        {x: 2, y: 9},
+        {x: 9, y: 9},
+        {x: 15, y: 9},
+        {x: 19, y: 9},
+        {x: 11, y: 4},
+        {x: 11, y: 5},
+        {x: 11, y: 6},
+        {x: 12, y: 4},
+        {x: 12, y: 5},
+        {x: 12, y: 6},
+        {x: 13, y: 4},
+        {x: 13, y: 5},
+        {x: 13, y: 6},
+    ];
+
+    let dotCount = 400 - borders.length - badPoints.length - dots.length;
+    
+    while (dotCount != 0) {
+        var dotBoard = document.createElement('div');
         dotBoard.className = 'dot';
         gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 3 + i;
-        dotBoard.style.gridColumn = 2;
+        dotBoard.style.gridRowStart = rand(2, 9);
+        dotBoard.style.gridColumnStart = rand(2, 19)
         let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
         dots.push(dot);
-    }
-    for (let i=0;i<6;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 3 + i;
-        dotBoard.style.gridColumn = 9;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<6;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 3 + i;
-        dotBoard.style.gridColumn = 15;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<6;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 3 + i;
-        dotBoard.style.gridColumn = 19;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<16;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 2;
-        dotBoard.style.gridColumn = 3 + i;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<6;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 8;
-        dotBoard.style.gridColumn = 3 + i;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<5;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 8;
-        dotBoard.style.gridColumn = 10 + i;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<3;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 8;
-        dotBoard.style.gridColumn = 16 + i;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<3;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 4;
-        dotBoard.style.gridColumn = 16 + i;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<3;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 5 + i;
-        dotBoard.style.gridColumn = 17;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<6;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 5;
-        dotBoard.style.gridColumn = 3 + i;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<2;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 3 + i;
-        dotBoard.style.gridColumn = 6;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
-    }
-    for (let i=0;i<1;i++) {
-        let dotBoard = document.createElement('div');
-        dotBoard.className = 'dot';
-        gameWindow.appendChild(dotBoard);
-        dotBoard.style.gridRow = 6 + i;
-        dotBoard.style.gridColumn = 6;
-        let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)}
-        dots.push(dot);
+        dotCount--
     }
 
+    let dotsOnBoard = document.getElementsByClassName('dot');
+
+    for (let i=0;i<dots.length;i++) {
+        for (let j=0;j<borders.length;j++) {
+            for (let k=0;k<badPoints.length;k++) {
+                if (dots[i].x === badPoints[k].x && dots[i].y === badPoints[k].y) {
+                    dotCount++;
+                    dots.splice(i, 1)
+                    dotsOnBoard[i].remove();
+                    drawDots();
+                }
+            }
+            if (dots[i].x === 11 || dots[i].x === 12 || dots[i].x === 13) {
+                if (dots[i].y === 4 || dots[i].y === 5 || dots[i].y === 6) {
+                    dotCount++;
+                    dots.splice(i, 1)
+                    dotsOnBoard[i].remove();
+                    drawDots();
+                }
+            }
+            if (dots[i].x === borders[j].x && dots[i].y === borders[j].y) {
+                dotCount++;
+                dots.splice(i, 1)
+                dotsOnBoard[i].remove();
+                drawDots();
+            }
+        }
+    }
 }
