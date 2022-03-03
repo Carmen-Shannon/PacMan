@@ -1,6 +1,6 @@
 var gameTimer = 0;
 
-import { gameWindow } from './drawmap.js';
+import { drawDots, gameWindow } from './drawmap.js';
 import {drawBorders} from './drawmap.js'
 import {borders} from './drawmap.js'
 import {drawPlayer, player, updatePlayer} from './player_movement.js'
@@ -31,9 +31,10 @@ document.onkeydown = function (key) {
 function main() {
     updatePlayer();
     drawPlayer();
-    setTimeout(main, 60);
+    setTimeout(main, 120);
 }
 
 drawBorders();
 spawnPlayer();
+drawDots();
 main();

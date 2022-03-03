@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: sans-serif;
 }
 
 body {
@@ -24,6 +25,7 @@ body {
     border-radius: 50%;
     background-color: yellow;
     margin: 5px;
+    z-index: 1;
 }
 
 .wall {
@@ -32,4 +34,17 @@ body {
 
 .walltoggle {
     background-color: red;
+}
+
+.dot {
+    background-color: rgb(156, 95, 16);
+    border-radius: 50%;
+    margin: 18px;
+}
+
+.score {
+    margin: 0px auto;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
 }
