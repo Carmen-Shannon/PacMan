@@ -8,7 +8,7 @@ export var player = {
 
 export var isHitWall = false;
 
-import { gameWindow } from "./drawmap.js";
+import { dots, gameWindow } from "./drawmap.js";
 import { rand } from "./drawmap.js";
 import { borders } from "./drawmap.js";
 
