@@ -1,0 +1,35 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: darkgrey;
+}
+
+.gamewindow {
+    margin: 0px auto;
+    background-color: black;
+    width: 100vmin;
+    height: 50vmin;
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#player {
+    border-radius: 50%;
+    background-color: yellow;
+    margin: 5px;
+}
+
+.wall {
+    background-color: blue;
+}
+
+.walltoggle {
+    background-color: red;
+}
