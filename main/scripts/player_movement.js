@@ -6,6 +6,8 @@ export var player = {
     direction: ''
 }
 
+export var isHitWall = false;
+
 import { gameWindow } from "./drawmap.js";
 import { rand } from "./drawmap.js";
 import { borders } from "./drawmap.js";
@@ -37,4 +39,52 @@ export function spawnPlayer() {
             spawnPlayer();
         }
     }
+}
+
+export function changeDirection(direction) {
+    player.direction = direction;
+}
+
+export function updatePlayer() {
+
+    switch (player.direction) {
+        case 'up':
+            for (let i=0;i<borders.length;i++) {
+                if (player.x === borders[i].x && player.y - 1 === borders[i].y) {
+                    return;
+                }
+            }
+            player.y -= 1;
+            break;
+        case 'down':
+            for (let i=0;i<borders.length;i++) {
+                if (player.x === borders[i].x && player.y + 1 === borders[i].y) {
+                    return;
+                }
+            }
+            player.y += 1;
+            break;
+        case 'left':
+            for (let i=0;i<borders.length;i++) {
+                if (player.x - 1 === borders[i].x && player.y === borders[i].y) {
+                    return;
+                }
+            }
+            player.x -= 1;
+            break;
+        case 'right':
+            for (let i=0;i<borders.length;i++) {
+                if (player.x + 1 === borders[i].x && player.y === borders[i].y) {
+                    return;
+                }
+            }
+            player.x += 1;
+            break;
+    }
+}
+
+export function drawPlayer() {
+    var playerBoard = document.getElementById('player');
+    playerBoard.style.gridRow = player.y;
+    playerBoard.style.gridColumn = player.x;
 }
