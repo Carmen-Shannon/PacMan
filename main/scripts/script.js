@@ -7,7 +7,7 @@ import {detectCollision, drawPlayer, player, updatePlayer} from './player_moveme
 import {rand} from './drawmap.js'
 import {spawnPlayer} from './player_movement.js'
 import {changeDirection} from './player_movement.js'
-import { changeGhostDirection, drawGhosts, spawnGhosts, updateGhosts } from './ghosts.js';
+import { changeGhostDirection, drawGhosts, spawnGhosts, updateGhosts, ghosts } from './ghosts.js';
 
 document.onkeydown = function (key) {
     switch (key.key) {
@@ -35,7 +35,6 @@ function main() {
     drawPlayer();
     updateGhosts();
     drawGhosts();
-    changeGhostDirection();
     setTimeout(main, 240);
 }
 
@@ -45,4 +44,5 @@ drawCherries();
 spawnPlayer();
 spawnGhosts();
 setWall();
+setInterval(changeGhostDirection, 1500);
 main();

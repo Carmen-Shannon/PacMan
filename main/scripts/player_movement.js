@@ -10,6 +10,7 @@ export var player = {
 import { cherries, dots, gameWindow } from "./drawmap.js";
 import { rand } from "./drawmap.js";
 import { borders } from "./drawmap.js";
+import { ghosts } from "./ghosts.js";
 
 export function spawnPlayer() {
     while (!player.instance) {
@@ -111,6 +112,12 @@ export function detectCollision() {
             removeDot(i, cherryBoard, cherries);
             updateScore(50);
             return;
+        }
+    }
+
+    for (let i=0;i<ghosts.length;i++) {
+        if (player.x === ghosts[i].x && player.y === ghosts[i].y) {
+            alert('collision')
         }
     }
 }

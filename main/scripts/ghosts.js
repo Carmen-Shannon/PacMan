@@ -11,23 +11,23 @@ export function spawnGhosts() {
     ghostBoard1.style.gridRowStart = 4;
     var ghost1 = {x:11, y:4, direction: ''};
 
-    // var ghostBoard2 = document.createElement('div');
-    // ghostBoard2.id = 'ghost2';
-    //ghostBoard2.className = 'ghost';
-    // gameWindow.appendChild(ghostBoard2);
-    // ghostBoard2.style.gridColumnStart = 13;
-    // ghostBoard2.style.gridRowStart = 4;
-    // var ghost2 = {x:13, y:4, direction: ''};
+    var ghostBoard2 = document.createElement('div');
+    ghostBoard2.id = 'ghost2';
+    ghostBoard2.className = 'ghost';
+    gameWindow.appendChild(ghostBoard2);
+    ghostBoard2.style.gridColumnStart = 13;
+    ghostBoard2.style.gridRowStart = 4;
+    var ghost2 = {x:13, y:4, direction: ''};
 
-    // var ghostBoard3 = document.createElement('div');
-    // ghostBoard3.id = 'ghost3';
-    //ghostBoard3.className = 'ghost';
-    // gameWindow.appendChild(ghostBoard3);
-    // ghostBoard3.style.gridColumnStart = 11;
-    // ghostBoard3.style.gridRowStart = 6;
-    // var ghost3 = {x:11, y:6, direction: ''};
+    var ghostBoard3 = document.createElement('div');
+    ghostBoard3.id = 'ghost3';
+    ghostBoard3.className = 'ghost';
+    gameWindow.appendChild(ghostBoard3);
+    ghostBoard3.style.gridColumnStart = 11;
+    ghostBoard3.style.gridRowStart = 6;
+    var ghost3 = {x:11, y:6, direction: ''};
 
-    ghosts.push(ghost1);
+    ghosts.push(ghost1, ghost2, ghost3);
 };
 
 export function updateGhosts() {
@@ -82,22 +82,30 @@ export function drawGhosts() {
 
 export function changeGhostDirection() {
 
-    for (let i=0;i<ghosts.length;i++) {
+    let timer = setInterval(addSeconds, 1000);
 
-        switch (rand(1, 4)) {
+    function addSeconds() {
+        let seconds = 0;
+        console.log(ghosts[0].direction)
+        if (seconds % 10 === 0) {
+            for (let i=0;i<ghosts.length;i++) {
 
-            case 1:
-                ghosts[i].direction = 'up';
-                break;          
-            case 2:
-                ghosts[i].direction = 'down';
-                break;
-            case 3:
-                ghosts[i].direction = 'left';
-                break; 
-            case 4:
-                ghosts[i].direction = 'right';
-                break; 
+                switch (rand(1, 4)) {
+        
+                    case 1:
+                        ghosts[i].direction = 'up';
+                        break;          
+                    case 2:
+                        ghosts[i].direction = 'down';
+                        break;
+                    case 3:
+                        ghosts[i].direction = 'left';
+                        break; 
+                    case 4:
+                        ghosts[i].direction = 'right';
+                        break; 
+                }
+            }
         }
     }
 }
