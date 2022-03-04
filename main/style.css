@@ -32,7 +32,7 @@ body {
     background-color: blue;
 }
 
-.walltoggle {
+#walltoggle {
     background-color: red;
 }
 
@@ -52,5 +52,23 @@ body {
 .cherry {
     background-color: red;
     margin: 12px;
+    border-radius: 50%;
+}
+
+#ghost1 {
+    background-color: darkmagenta;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+#ghost2 {
+    background-color: orange;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+#ghost3 {
+    background-color: cyan;
+    margin: 5px;
     border-radius: 50%;
 }

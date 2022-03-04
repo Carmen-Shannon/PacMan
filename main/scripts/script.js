@@ -1,12 +1,13 @@
 var gameTimer = 0;
 
-import { drawCherries, drawDots, gameWindow } from './drawmap.js';
+import { drawCherries, drawDots, gameWindow, setWall } from './drawmap.js';
 import {drawBorders} from './drawmap.js'
 import {borders} from './drawmap.js'
 import {detectCollision, drawPlayer, player, updatePlayer} from './player_movement.js'
 import {rand} from './drawmap.js'
 import {spawnPlayer} from './player_movement.js'
 import {changeDirection} from './player_movement.js'
+import { changeGhostDirection, drawGhosts, spawnGhosts, updateGhosts } from './ghosts.js';
 
 document.onkeydown = function (key) {
     switch (key.key) {
@@ -32,6 +33,9 @@ function main() {
     updatePlayer();
     detectCollision();
     drawPlayer();
+    updateGhosts();
+    drawGhosts();
+    changeGhostDirection();
     setTimeout(main, 240);
 }
 
@@ -39,4 +43,6 @@ drawBorders();
 drawDots();
 drawCherries();
 spawnPlayer();
+spawnGhosts();
+setWall();
 main();

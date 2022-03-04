@@ -200,7 +200,7 @@ export function drawBorders() {
     }
 
     var wallToggle = document.createElement('div');
-    wallToggle.className = 'walltoggle'
+    wallToggle.id = 'walltoggle'
     gameWindow.appendChild(wallToggle)
     wallToggle.style.gridColumn = 13;
     wallToggle.style.gridRow = 7;
@@ -328,4 +328,26 @@ export function drawDots() {
     if (dotCount != 0) {
         drawDots();
     }
+}
+
+export function setWall() {
+    let moveWall = document.getElementById('walltoggle');
+    let seconds = 0;
+
+    function addSeconds() {
+        seconds++;
+        console.log(seconds)
+        if (seconds === 10) {
+            clearInterval(timer)
+            moveWall.parentNode.removeChild(moveWall);
+            for (let i=0;i<borders.length;i++) {
+                if (borders[i].x === 13 && borders[i].y === 7) {
+                    borders.splice(i, 1);
+                }
+            }
+        }
+    }
+
+    let timer = setInterval(addSeconds, 1000);
+    
 }

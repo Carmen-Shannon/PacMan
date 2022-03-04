@@ -6,7 +6,6 @@ export var player = {
     direction: ''
 }
 
-export var isHitWall = false;
 
 import { cherries, dots, gameWindow } from "./drawmap.js";
 import { rand } from "./drawmap.js";
