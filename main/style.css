@@ -42,7 +42,7 @@ body {
     margin: 18px;
 }
 
-.score {
+#score {
     margin: 0px auto;
     text-align: center;
     font-size: 50px;

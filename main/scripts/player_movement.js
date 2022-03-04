@@ -54,6 +54,7 @@ export function updatePlayer() {
                     return;
                 }
             }
+            detectCollision();
             player.y -= 1;
             break;
         case 'down':
@@ -62,6 +63,7 @@ export function updatePlayer() {
                     return;
                 }
             }
+            detectCollision();
             player.y += 1;
             break;
         case 'left':
@@ -70,6 +72,7 @@ export function updatePlayer() {
                     return;
                 }
             }
+            detectCollision();
             player.x -= 1;
             break;
         case 'right':
@@ -78,6 +81,7 @@ export function updatePlayer() {
                     return;
                 }
             }
+            detectCollision();
             player.x += 1;
             break;
     }
@@ -87,4 +91,20 @@ export function drawPlayer() {
     var playerBoard = document.getElementById('player');
     playerBoard.style.gridRow = player.y;
     playerBoard.style.gridColumn = player.x;
+}
+
+let scoreBoard = document.getElementById('score');
+
+export function detectCollision() {
+    for (let i=0;i<dots.length;i++) {
+        if (player.x === dots[i].x && player.y === dots[i].y) {
+            let dot = document.getElementsByClassName('dot');
+            dots.splice(i, 1);
+            dot[i].remove();
+            player.score += 3;
+            scoreBoard.innerText = `Score: ${player.score}`
+        } else {
+            continue;
+        }
+    }
 }
