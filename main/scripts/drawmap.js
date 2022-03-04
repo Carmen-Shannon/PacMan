@@ -1,6 +1,7 @@
 export var borders = [];
 export var gameWindow = document.getElementsByClassName('gamewindow')[0];
 export var dots = [];
+export var cherries = [];
 
 export function drawBorders() {
     var gameWindow = document.getElementsByClassName('gamewindow')[0];
@@ -217,6 +218,28 @@ export function rand(start, end) {
     return randPick;
 }
 
+export function drawCherries() {
+
+    let cornerPoints = [
+        {x: 2, y: 2},
+        {x: 19, y: 2},
+        {x: 2, y: 9},
+        {x: 9, y: 9},
+        {x: 15, y: 9},
+        {x: 19, y: 9},
+    ];
+    
+    for (let i=0;i<cornerPoints.length;i++) {
+        let cherryBoard = document.createElement('div');
+        cherryBoard.className = 'cherry';
+        gameWindow.appendChild(cherryBoard);
+        cherryBoard.style.gridRowStart = cornerPoints[i].y;
+        cherryBoard.style.gridColumnStart = cornerPoints[i].x;
+        let cherry = cornerPoints[i];
+        cherries.push(cherry);
+    }
+}
+
 export function drawDots() {
 
     let badPoints = [
@@ -237,7 +260,7 @@ export function drawDots() {
         {x: 13, y: 6},
     ];
     let coordArr = [];
-    let dotCount = 200 - borders.length - badPoints.length - dots.length;
+    let dotCount = 204 - borders.length - badPoints.length - dots.length;
     let dotsOnBoard = document.getElementsByClassName('dot');
     
     while (dotCount != 0) {
