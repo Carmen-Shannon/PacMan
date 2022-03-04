@@ -32,10 +32,10 @@ function main() {
     updatePlayer();
     detectCollision();
     drawPlayer();
-    setTimeout(main, 1000 / 6);
+    setTimeout(main, 150);
 }
 
 drawBorders();
-spawnPlayer();
 drawDots();
+spawnPlayer();
 main();

@@ -1,6 +1,6 @@
 export var player = {
-    x:0,
-    y:0,
+    x: 0,
+    y: 0,
     score: 0,
     instance: false,
     direction: ''
@@ -24,7 +24,7 @@ export function spawnPlayer() {
         player.instance = true;
     }
 
-    for (let i=0;i<borders.length;i++) {
+    for (let i = 0; i < borders.length; i++) {
         if (player.x === borders[i].x && player.y === borders[i].y) {
             player.instance = false;
             document.getElementById('player').remove();
@@ -49,39 +49,35 @@ export function updatePlayer() {
 
     switch (player.direction) {
         case 'up':
-            for (let i=0;i<borders.length;i++) {
+            for (let i = 0; i < borders.length; i++) {
                 if (player.x === borders[i].x && player.y - 1 === borders[i].y) {
                     return;
                 }
             }
-            detectCollision();
             player.y -= 1;
             break;
         case 'down':
-            for (let i=0;i<borders.length;i++) {
+            for (let i = 0; i < borders.length; i++) {
                 if (player.x === borders[i].x && player.y + 1 === borders[i].y) {
                     return;
                 }
             }
-            detectCollision();
             player.y += 1;
             break;
         case 'left':
-            for (let i=0;i<borders.length;i++) {
+            for (let i = 0; i < borders.length; i++) {
                 if (player.x - 1 === borders[i].x && player.y === borders[i].y) {
                     return;
                 }
             }
-            detectCollision();
             player.x -= 1;
             break;
         case 'right':
-            for (let i=0;i<borders.length;i++) {
+            for (let i = 0; i < borders.length; i++) {
                 if (player.x + 1 === borders[i].x && player.y === borders[i].y) {
                     return;
                 }
             }
-            detectCollision();
             player.x += 1;
             break;
     }
@@ -93,18 +89,26 @@ export function drawPlayer() {
     playerBoard.style.gridColumn = player.x;
 }
 
-let scoreBoard = document.getElementById('score');
+let dot = document.getElementsByClassName('dot');
 
 export function detectCollision() {
-    for (let i=0;i<dots.length;i++) {
-        if (player.x === dots[i].x && player.y === dots[i].y) {
-            let dot = document.getElementsByClassName('dot');
-            dots.splice(i, 1);
-            dot[i].remove();
-            player.score += 3;
-            scoreBoard.innerText = `Score: ${player.score}`
-        } else {
-            continue;
+
+    function removeDot(x) {
+        dots.splice(x, 1);
+        dot[x].parentNode.removeChild(dot[x]);
+    };
+
+    for (let i = 0; i < dots.length; i++) {
+        if (player.x === dots[i].x && player.y === dots[i].y && player.direction != '') {
+            removeDot(i);
+            updateScore();
+            return;
         }
     }
+}
+
+export function updateScore() {
+    let scoreBoard = document.getElementById('score');
+    player.score += 10;
+    scoreBoard.innerText = `Score: ${player.score}`;
 }
