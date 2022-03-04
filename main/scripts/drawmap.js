@@ -337,7 +337,7 @@ export function setWall() {
     function addSeconds() {
         seconds++;
         console.log(seconds)
-        if (seconds === 10) {
+        if (seconds === 3) {
             clearInterval(timer)
             moveWall.parentNode.removeChild(moveWall);
             for (let i=0;i<borders.length;i++) {
