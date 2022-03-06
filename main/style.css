@@ -50,9 +50,10 @@ body {
 }
 
 .cherry {
-    background-color: red;
-    margin: 12px;
+    background-image: url('../assets/cherry.png');
+    margin:2px;
     border-radius: 50%;
+    background-size: contain;
 }
 
 #ghost1 {

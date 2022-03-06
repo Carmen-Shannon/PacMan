@@ -230,7 +230,7 @@ export function drawCherries() {
     ];
     
     for (let i=0;i<cornerPoints.length;i++) {
-        let cherryBoard = document.createElement('div');
+        let cherryBoard = document.createElement('image');
         cherryBoard.className = 'cherry';
         gameWindow.appendChild(cherryBoard);
         cherryBoard.style.gridRowStart = cornerPoints[i].y;
@@ -259,7 +259,6 @@ export function drawDots() {
         {x: 13, y: 5},
         {x: 13, y: 6},
     ];
-    let coordArr = [];
     let dotCount = 204 - borders.length - badPoints.length - dots.length;
     let dotsOnBoard = document.getElementsByClassName('dot');
     
@@ -270,9 +269,7 @@ export function drawDots() {
         dotBoard.style.gridRowStart = rand(2, 9);
         dotBoard.style.gridColumnStart = rand(2, 19)
         let dot = {x: Number(dotBoard.style.gridColumnStart), y: Number(dotBoard.style.gridRowStart)};
-        let xy = String(dot.x) + String(dot.y);
         dots.push(dot);
-        coordArr.push(xy);
         dotCount--
     }
 
@@ -336,7 +333,6 @@ export function setWall() {
 
     function addSeconds() {
         seconds++;
-        console.log(seconds)
         if (seconds === 3) {
             clearInterval(timer)
             moveWall.parentNode.removeChild(moveWall);
